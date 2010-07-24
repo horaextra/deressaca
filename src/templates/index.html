@@ -23,10 +23,9 @@
 
   <div id="btn-area">
     <form action="." method="post">
+        {% csrf_token %}
         <input id="drunk_person" type="hidden" value="1" />
         <input id="btn-hangover" type="submit" value="Estou de ressaca!" />
-
-    {% csrf_token %}
     </form>
   </div>
 
