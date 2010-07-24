@@ -87,3 +87,8 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'ressaca',
 )
+
+try:
+    from local_settings import *
+except ImportError:
+    pass
