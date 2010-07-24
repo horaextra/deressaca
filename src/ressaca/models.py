@@ -1,6 +1,6 @@
 from django.db import models
 
-class Hangovers(models.Model):
+class Hangover(models.Model):
 
-    day = models.DateField()
+    day = models.DateField(auto_now_add=True)
     counter = models.IntegerField()
