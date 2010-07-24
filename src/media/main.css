@@ -1,0 +1,100 @@
+/*Resets and overrides*/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,
+form,fieldset,input,textarea,p,blockquote,th,td {
+    padding: 0;
+    margin: 0;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+fieldset,img {
+    border: 0;
+}
+address,caption,cite,code,dfn,em,strong,th,var {
+    font-weight: normal;
+    font-style: normal;
+}
+ol,ul {
+    list-style: none;
+}
+caption,th {
+    text-align: left;
+}
+h1,h2,h3,h4,h5,h6 {
+    font-weight: normal;
+    font-size: 100%;
+}
+q:before,q:after {
+    content:'';
+}
+abbr,acronym { border: 0;
+}
+
+/*Links and type*/
+body{
+  font: 12px Arial, "Sans Serif";
+  text-align: center;
+  background: #dedede url(bg.png) repeat-x center bottom;
+  min-height: 650px;
+}
+a{
+  color: #5bcccc;
+  text-decoration: none;
+}
+a:hover{
+  text-decoration: underline;
+}
+h1{
+  background: url(page-title.png) no-repeat 0 0;
+  width: 386px;
+  height: 49px;
+  margin: 50px auto;
+  text-indent: -15000px;
+}
+h2{
+  font-size: 2em;
+  width: 146px;
+  margin: 0 auto;
+}
+h2 span{
+  background: -webkit-gradient(linear, left top, left bottom, from(#666), to(#333)); /* webkit browsers */
+  background: -moz-linear-gradient(top,  #666,  #333); /* Firefox 3.6+ */
+  border: 1px solid #666;
+  color: #fff;
+  padding: 10px;
+  margin: 0 1px 0 0;
+  float: left;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+
+/*Specific elements*/
+
+#btn-area{
+  clear: both;
+  padding: 50px;
+  margin: 0 0 100px;
+}
+#btn-hangover{
+  background: url(btn-hangover.png) no-repeat 0 0;
+  width: 253px;
+  height: 240px;
+  text-indent: -15000px;
+  border: 0;
+  font-size: 2em;
+  cursor: pointer;
+}
+#btn-hangover:active, #btn-hangover:focus{
+  background: url(btn-hangover.png) no-repeat -254px 0;
+  border: 0;
+}
+#he{
+  background: url(he.png) no-repeat 0 0;
+  display: block;
+  width: 72px;
+  height: 27px;
+  text-indent: -15000px;
+  margin: 0 auto;
+  padding: 10px 0;
+}

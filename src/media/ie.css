@@ -1,0 +1,14 @@
+/*iE sucks*/
+
+body{
+  min-height: 650px;
+  height:auto !important;
+  height: 650px;
+}
+h2 span{
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#666666', endColorstr='#333333'); /* IE */
+}
+#btn-hangover{
+  font-size: 0;
+  line-height: 0;
+}
