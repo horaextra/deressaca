@@ -19,13 +19,13 @@
 <body>
   <h1>#de Ressaca</h1>
 
-  <h2><span>0</span><span>0</span><span>0</span><span>0</span></h2>
+  <!--><h2><span>0</span><span>0</span><span>0</span><span>0</span></h2>-->
 
   <div id="btn-area">
     <form action="." method="post">
         {% csrf_token %}
-        <input id="drunk_person" type="hidden" value="1" />
-        <input id="btn-hangover" type="submit" value="Estou de ressaca!" />
+        <input name="new_hangover" id="new_hangover" type="hidden" value="1" />
+        <input name="btn-hangover" id="btn-hangover" type="submit" value="Estou de ressaca!" />
     </form>
   </div>
 
