@@ -1,4 +1,5 @@
 #coding:utf-8
+import urllib
 from datetime import datetime
 
 from django.template import RequestContext
@@ -18,8 +19,8 @@ def show_counter(request):
 
 @require_POST
 def inc_hangover_counter(request):
-    twitter_message = 'Eu também estou #deressaca!'
-    twitter_url = 'http://twitter.com/?status=%s' % twitter_message
+    twitter_message = urllib.urlencode({'status': 'Eu também estou #deressaca!'})
+    twitter_url = 'http://twitter.com/?%s' % twitter_message
 
     if 'new_hangover' in request.POST:
         Hangover.objects.create()
