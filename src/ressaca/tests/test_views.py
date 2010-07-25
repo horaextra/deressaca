@@ -14,7 +14,7 @@ class TestCounterView(TestCase):
 
     def test_counter_is_zero_when_there_is_no_hangover(self):
         response = self.client.get(reverse('counter'))
-        self.assertEquals(response.context['hangovers'], 0)
+        self.assertEquals(response.context['hangovers'], '0000')
 
     def test_post_inc_counter_when_is_hungover(self):
         response = self.client.post(
@@ -42,7 +42,7 @@ class TestCounterView(TestCase):
             {'new_hangover':1}
         )
         response = self.client.get(reverse('counter'))
-        self.assertEquals(response.context['hangovers'], 1)
+        self.assertEquals(response.context['hangovers'], '0001')
 
     def test_redirect_when_post_new_hangover(self):
         twitter_url = 'http://twitter.com/?status=Eu%20tamb%C3%A9m%20estou%20#deressaca!'

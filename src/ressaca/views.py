@@ -12,7 +12,8 @@ from models import Hangover
 
 @require_GET
 def show_counter(request):
-    hangovers = Hangover.objects.count()
+    hangovers = str(Hangover.objects.count())
+    hangovers = '0' * (4 - len(hangovers)) + hangovers
 
     context = RequestContext(request, {'hangovers':hangovers})
     return render_to_response('index.html', context)
