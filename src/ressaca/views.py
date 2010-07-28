@@ -21,7 +21,8 @@ def show_counter(request):
 
 @require_POST
 def inc_hangover_counter(request):
-    msg = 'Eu também estou #deressaca! http://deressaca.net'
+    hangovers = _today_hangovers()
+    msg = 'Eu sou a %sª pessoa #deressaca hoje! http://deressaca.net' % hangovers
     twitter_message = urllib.urlencode({'status': msg})
     twitter_url = 'http://twitter.com/home?%s' % twitter_message
 

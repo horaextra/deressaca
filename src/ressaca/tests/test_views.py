@@ -54,12 +54,12 @@ class TestCounterView(TestCase):
         self.assertEquals(response.context['hangovers'], '0001')
 
     def test_redirect_when_post_new_hangover(self):
-        twitter_url = 'http://twitter.com/home?status=Eu+tamb%C3%A9m+estou+%23deressaca%21+http%3A%2F%2Fderessaca.net'
+        twitter_url = 'http://twitter.com/home?status='
         response = self.client.post(
             reverse('counter'),
             {'new_hangover':1}
         )
-        self.assertEqual(response['location'], twitter_url)
+        self.assertTrue(twitter_url in response['location'])
 
     def test_redirects_to_counter_page_when_post_is_malformed(self):
         response = self.client.post(
@@ -67,4 +67,15 @@ class TestCounterView(TestCase):
             {'wrong':1}
         )
         self.assertRedirects(response, reverse('counter'))
+
+    def test_twitter_message_contains_number_of_hangovers(self):
+        Hangover.objects.create()
+        Hangover.objects.create()
+        msg = 'Eu+sou+a+2'
+        response = self.client.post(
+            reverse('counter'),
+            {'new_hangover':1}
+        )
+        self.assertTrue(msg in response['location'])
+
 
