@@ -12,8 +12,8 @@ from models import Hangover
 
 @require_GET
 def show_counter(request):
-    today = datetime.today().date()
-    hangovers = str(len(Hangover.objects.filter(day=today)))
+    hangovers = _today_hangovers()
+
     hangovers = '0' * (4 - len(hangovers)) + hangovers
 
     context = RequestContext(request, {'hangovers':hangovers})
@@ -31,3 +31,8 @@ def inc_hangover_counter(request):
         return HttpResponseRedirect(twitter_url)
     else:
         return HttpResponseRedirect(reverse('counter'))
+
+def _today_hangovers():
+    today = datetime.today().date()
+    return str(len(Hangover.objects.filter(day=today)))
+
