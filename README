@@ -1,6 +1,0 @@
-BOOTSTRAP SCRIPT
-================
-
-To setup your development environment, run:
-
-$ python bootstrap/bootstrap.py
