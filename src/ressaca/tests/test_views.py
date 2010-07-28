@@ -1,4 +1,5 @@
 #coding:utf-8
+import datetime
 
 from django.test import TestCase
 from django.core.urlresolvers import reverse
@@ -15,6 +16,14 @@ class TestCounterView(TestCase):
     def test_counter_is_zero_when_there_is_no_hangover(self):
         response = self.client.get(reverse('counter'))
         self.assertEquals(response.context['hangovers'], '0000')
+
+    def test_counter_shows_only_the_hangovers_of_the_day(self):
+        hangover_1 = Hangover.objects.create()
+        hangover_2 = Hangover.objects.create()
+        hangover_2.day = datetime.date(2008, 1, 30)
+        hangover_2.save()
+        response = self.client.get(reverse('counter'))
+        self.assertEquals(response.context['hangovers'], '0001')
 
     def test_post_inc_counter_when_is_hungover(self):
         response = self.client.post(
