@@ -12,17 +12,19 @@ from models import Hangover
 
 @require_GET
 def show_counter(request):
-    hangovers = Hangover.objects.count()
+    hangovers = _today_hangovers()
+
+    hangovers = '0' * (4 - len(hangovers)) + hangovers
 
     context = RequestContext(request, {'hangovers':hangovers})
     return render_to_response('index.html', context)
 
 @require_POST
 def inc_hangover_counter(request):
-    msg = 'status=Eu+tamb%C3%A9m+estou+%23deressaca'
-    #twitter_message = urllib.urlencode({'status': msg})
-    #twitter_url = 'http://twitter.com/?%s' % twitter_message
-    twitter_url = 'http://twitter.com/home?%s' % msg
+    hangovers = _today_hangovers()
+    msg = 'Eu sou a %sª pessoa #deressaca hoje! http://deressaca.net' % hangovers
+    twitter_message = urllib.urlencode({'status': msg})
+    twitter_url = 'http://twitter.com/home?%s' % twitter_message
 
     if 'new_hangover' in request.POST:
         Hangover.objects.create()
@@ -30,3 +32,8 @@ def inc_hangover_counter(request):
         return HttpResponseRedirect(twitter_url)
     else:
         return HttpResponseRedirect(reverse('counter'))
+
+def _today_hangovers():
+    today = datetime.today().date()
+    return str(len(Hangover.objects.filter(day=today)))
+
