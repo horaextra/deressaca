@@ -20,10 +20,9 @@ def show_counter(request):
 
 @require_POST
 def inc_hangover_counter(request):
-    msg = 'status=Eu+tamb%C3%A9m+estou+%23deressaca'
-    #twitter_message = urllib.urlencode({'status': msg})
-    #twitter_url = 'http://twitter.com/?%s' % twitter_message
-    twitter_url = 'http://twitter.com/home?%s' % msg
+    msg = 'Eu também estou #deressaca! http://deressaca.net'
+    twitter_message = urllib.urlencode({'status': msg})
+    twitter_url = 'http://twitter.com/home?%s' % twitter_message
 
     if 'new_hangover' in request.POST:
         Hangover.objects.create()
